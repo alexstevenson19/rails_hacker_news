@@ -1,0 +1,12 @@
+
+<%= render :partial => 'articles/show', locals: { article: @article } %>
+
+<div class="comment-box">
+  <%= render partial: 'form', locals: { article: @article } %>
+</div>
+
+<ul>
+  <% @article.comments.each do |comment| %>
+    <%= render partial: 'show', locals: { comment: comment } %>
+  <% end %>
+</ul>
