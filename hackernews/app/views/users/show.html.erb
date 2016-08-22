@@ -1,0 +1,15 @@
+<h1><%= @user.name%>'s page</h1>
+
+<h4><%= @user.name %>'s Articles</h4>
+<ul>
+  <% @user.articles.each do |article| %>
+    <%= render :partial => 'articles/show', locals: { article: article } %>
+  <% end %>
+</ul>
+
+<h4><%= @user.name %>'s Comments</h4>
+<ul>
+  <% @user.comments.each do |comment| %>
+    <%= render :partial => 'comments/show', locals: { comment: comment } %>
+  <% end %>
+</ul>

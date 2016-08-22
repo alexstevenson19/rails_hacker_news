@@ -3,8 +3,11 @@
 <%= article.votes.count %>
 <%= link_to article.comments.count, [article, :comments] %></li>
 
+<% if article.poster_id == session[:user_id] %>
 <span>
   <%= link_to 'edit', edit_article_path(article) %>
   <%= link_to 'destroy', article_path(article), method: :delete, data: { confirm: 'Positive?'} %>
 </span>
-
+<% else %>
+  <%= link_to 'upvote', "/articles/#{article.id}/vote", method: :post %>
+<% end %>

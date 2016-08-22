@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <%= link_to "Home", "/" %>
+  <% if session[:user_id] != nil %>
+    <%= link_to "Logout", "/sessions", method: :delete %>
+    <%= link_to "User info", user_path(session[:user_id]) %>
+  <% else %>
+    <%= link_to "Register", new_user_path %>
+    <%= link_to "Login", "/sessions/new" %>
+  <% end %>
+</nav>
 
 <%= yield %>
 
 </body>
 </html>
+

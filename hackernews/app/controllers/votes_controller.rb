@@ -1,22 +1,19 @@
 class VotesController < ApplicationController
-  def index
+
+ def create
+    type = params[:votable_type][0...-1].capitalize
+    @vote = Vote.new(votable_type: type, votable_id: params[:id], user_id: session[:id])
+    p @vote
+    @vote.save
+
+    if type == "Comment"
+      @article = Comment.find(params[:id]).article
+    else
+      @article = Article.find(params[:id])
+    end
+
+    redirect_to [@article, :comments]
+
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end

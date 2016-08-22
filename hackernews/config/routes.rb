@@ -64,4 +64,10 @@ Rails.application.routes.draw do
 
   get 'articles/index'
   root 'articles#index'
+
+  get '/sessions/new' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
+  delete '/sessions' => 'sessions#destroy'
+  post '/:votable_type/:id/vote' => 'votes#create'
+
 end
