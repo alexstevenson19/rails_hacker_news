@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :votes
+  ##
 
   get 'articles/index'
   root 'articles#index'
